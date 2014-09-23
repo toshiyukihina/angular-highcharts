@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-sm-12">
+    <accordion>
+      <accordion-group is-open="accordion.chartStatus">
+        <accordion-heading>
+          <i class="fa fa-area-chart"></i>
+          Chart
+          <button class="btn btn-xs btn-default pull-right" ng-click="reflow($event)">
+            <i class="fa fa-refresh"></i>
+          </button>
+        </accordion-heading>
+        <highchart id="chart1" config="chartConfig"></highchart>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <accordion>
+      <accordion-group is-open="accordion.settingsStatus">
+        <accordion-heading>
+          <i class="fa fa-cog"></i>
+          Settings
+        </accordion-heading>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputTitle" placeholder="Input title" ng-model="chartConfig.title.text">
+            </div>
+          </div>      
+          <div class="form-group">
+            <label for="inputSubtitle" class="col-sm-2 control-label">Subtitle</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputSubtitle" placeholder="Input subtitle" ng-model="chartConfig.subtitle.text">
+            </div>
+          </div>      
+          <div class="form-group">
+            <label for="inputWidth" class="col-sm-2 control-label">Width</label>
+            <div class="col-sm-4">
+              <input type="number" class="form-control" id="inputWidth" placeholder="Input width" ng-model="chartConfig.size.width">
+            </div>
+            <label for="inputHeight" class="col-sm-2 control-label">Height</label>
+            <div class="col-sm-4">
+              <input type="number" class="form-control" id="inputHeight" placeholder="Input hight" ng-model="chartConfig.size.height">
+            </div>
+          </div>    
+        </form>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <accordion>
+      <accordion-group is-open="accordion.seriesStatus">
+        <accordion-heading>
+          <i class="fa fa-database"></i>
+          Chart Data
+        </accordion-heading>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Color</th>
+              <th>Width</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="s in chartConfig.series">
+              <td>
+                <input type="text" class="form-control" placeholder="Input color code" ng-model="s.name">
+              </td>
+              <td>
+                <select class="form-control" 
+                        ng-model="s.type" 
+                        ng-options="chartType.id as chartType.title for chartType in chartTypes">
+                </select>
+              </td>
+              <td>
+                <input type="text" class="form-control" placeholder="Input color code">
+              </td>
+              <td>
+                <input type="number" class="form-control" placeholder="Input line width">
+              </td>
+              <td class="vert-align">
+                <button class="btn btn-xs btn-danger">
+                  <i class="fa fa-times"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>
