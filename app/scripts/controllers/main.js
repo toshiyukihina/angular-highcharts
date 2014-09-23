@@ -69,6 +69,10 @@ angular.module('angularHighchartsApp')
         $scope.$broadcast('highchartsng.reflow');
       };
 
+      $scope.removeSeries = function(id) {
+        $scope.chartConfig.series.splice(id, 1);
+      };
+
       (function() {
         $http({ method: 'GET', url: '/data/series.json' })
           .success(function(data) {
